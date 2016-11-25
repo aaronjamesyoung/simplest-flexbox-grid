@@ -1,0 +1,17 @@
+
+//Override as required.
+  $_fg_small: 480px !default;
+  $_fg_medium: 720px !default;
+  $_fg_large: 1024px !default;
+
+@mixin _fg_breakpoint($_fg_media) {
+  @if $_fg_media == small {
+    @media only screen and (min-width: $small) and (max-width: $medium){ @content; }
+  }
+  @else if $_fg_media == medium {
+    @media only screen and (min-width: $medium) and (max-width: $large) { @content; }
+  }
+  @else if $_fg_media == large {
+    @media only screen and (min-width: $large) { @content; }
+  }
+}
