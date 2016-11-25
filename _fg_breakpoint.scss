@@ -6,12 +6,12 @@
 
 @mixin _fg_breakpoint($_fg_media) {
   @if $_fg_media == small {
-    @media only screen and (min-width: $small) and (max-width: $medium){ @content; }
+    @media only screen and (min-width: $_fg_small) and (max-width: $_fg_medium){ @content; }
   }
   @else if $_fg_media == medium {
-    @media only screen and (min-width: $medium) and (max-width: $large) { @content; }
+    @media only screen and (min-width: $_fg_medium) and (max-width: $_fg_large) { @content; }
   }
   @else if $_fg_media == large {
-    @media only screen and (min-width: $large) { @content; }
+    @media only screen and (min-width: $_fg_large) { @content; }
   }
 }
