@@ -168,3 +168,8 @@ You may also pass the breakpoint as an arbitrary width:
 ```
 @include _fg_breakpoint(600); // evaluates to "@media (min-width: 600)"
 ```
+
+## Credits
+
+* [Roland Toth](https://github.com/rolandtoth) augmented the original mixin to accept a layout; taught me a couple cool SCSS tricks I wasn't aware of
+* [Jayesh Saraf](https://github.com/SarafJayesh) supplied a breakpoint mixin 
