@@ -1,0 +1,18 @@
+//Override as required.
+_fg_small ?= 768 // up to "tablet" size
+_fg_medium ?= 1024 // up to "desktop" size
+_fg_large ?= 1280 // up to bigger desktop size
+
+_fg_breakpoint(_fg_media)
+    if _fg_media == small
+        @media only screen and (min-width: (_fg_small)px)
+            {block}
+    else if _fg_media == medium
+        @media only screen and (min-width: (_fg_medium)px)
+            {block}
+    else if _fg_media == large
+        @media only screen and (min-width: (_fg_large)px)
+            {block}
+    else if type-of(_fg_media) == 'unit'
+        @media only screen and (min-width: (_fg_media)px)
+            {block}
