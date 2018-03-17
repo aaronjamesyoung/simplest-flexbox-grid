@@ -3,7 +3,7 @@
 This is a set of simple CSS preprocessor mixins meant to provide a basic grid for your websites.
 <https://ajy.co/the-simplest-sass-flexbox-grid-ever>
 
-See a demeo and play with it:
+See a demo and play with it:
 
 * [Sass Demo (Codepen)](http://codepen.io/aaronjamesyoung/pen/yezKpj)
 * [Stylus Demo (Codepen)](https://codepen.io/narkoleptika/pen/eMJyjW)
