@@ -8,9 +8,7 @@ $_fg_padding: 12 !default; // padding for column boxes. Set as desired, can over
 @mixin _fg($colList, $gutter: $_fg_gutter, $padding: $_fg_padding) {
   @if type-of($colList) == number { // call _fg_grid() directly
     @include _fg_grid($colList, $gutter, $padding);
-
   } @else if type-of($colList) == list and length($colList) > 1 {
-
     // Count how many columns there are altogether
     $columnCount: 0;
     @each $i in $colList {

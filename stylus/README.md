@@ -15,14 +15,14 @@ The mixin accepts three arguments, which I'll explain below:
 
 1. Number of columns OR layout
 2. Width of gutter between grid columns, in pixels
-3. amount of padding on grid columns, in pixels
+3. Amount of padding in grid columns, in pixels
 
 Let's break it down, starting with the simplest usage.
 
 ### Sample HTML
 
 ```html
-<div clas="grid_container">
+<div class="grid_container">
   <div class="column_1">Column 1</div>
   <div>Column 2</div>
   <div>Column 3</div>
@@ -173,7 +173,6 @@ body
     _fg(2) // tablet size
   +_fg_breakpoint(medium)
     _fg(4) // desktop size
-}
 ```
 
 Of course you may set the pixel numbers to whatever you prefer.
