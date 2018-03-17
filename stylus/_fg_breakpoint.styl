@@ -1,18 +1,26 @@
-//Override as required.
-_fg_small ?= 768 // up to "tablet" size
-_fg_medium ?= 1024 // up to "desktop" size
-_fg_large ?= 1280 // up to bigger desktop size
+// Override as required.
+_fg_small ?= 768px // up to "tablet" size
+_fg_medium ?= 1024px // up to "desktop" size
+_fg_large ?= 1280px // up to bigger desktop size
 
 _fg_breakpoint(_fg_media)
+    if unit(_fg_small) == ''
+        _fg_small = unit(_fg_small, px)
+    if unit(_fg_medium) == ''
+        _fg_medium = unit(_fg_medium, px)
+    if unit(_fg_large) == ''
+        _fg_large = unit(_fg_large, px)
     if _fg_media == small
-        @media only screen and (min-width: (_fg_small)px)
+        @media only screen and (min-width: _fg_small)
             {block}
     else if _fg_media == medium
-        @media only screen and (min-width: (_fg_medium)px)
+        @media only screen and (min-width: _fg_medium)
             {block}
     else if _fg_media == large
-        @media only screen and (min-width: (_fg_large)px)
+        @media only screen and (min-width: _fg_large)
             {block}
     else if type-of(_fg_media) == 'unit'
-        @media only screen and (min-width: (_fg_media)px)
+        if unit(_fg_media) == ''
+            _fg_media = unit(_fg_media, px)
+        @media only screen and (min-width: _fg_media)
             {block}

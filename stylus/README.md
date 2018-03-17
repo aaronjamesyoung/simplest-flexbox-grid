@@ -14,8 +14,8 @@ layout as specified in the mixin.
 The mixin accepts three arguments, which I'll explain below:
 
 1. Number of columns OR layout
-2. Width of gutter between grid columns, in pixels
-3. Amount of padding in grid columns, in pixels
+2. Width of gutter between grid columns
+3. Amount of padding in grid columns
 
 Let's break it down, starting with the simplest usage.
 
@@ -36,9 +36,11 @@ Let's break it down, starting with the simplest usage.
 ### Default settings
 
 ```styl
-_fg_gutter ?= 24 // gutter between columns. Set as desired.
-_fg_padding ?= 12 // padding for column boxes. Set as desired, can override for individual columns.
+_fg_gutter ?= 24px // gutter between columns. Set as desired.
+_fg_padding ?= 12px // padding for column boxes. Set as desired, can override for individual columns.
 ```
+
+*(Previously these settings were unitless, to be interpreted as pixels. Now you can set these to any units you prefer. If you don't specify a unit, it will still be interpreted as pixels by the mixin)*
 
 You can override these settings as desired for your project (they can also be custom-set any time you call the `_fg()` mixin, but we'll get to that in a second).
 
@@ -108,12 +110,12 @@ Also note that these two statements are equivalent:
 
 ```styl
 .grid_container
-  _fg(3, 45)
+  _fg(3, 45px)
 ```
 
 ```styl
 .grid_container
-  _fg(1 3 2, 45)
+  _fg(1 3 2, 45px)
 ```
 
 Each example above sets a gutter of 45px between each column.
@@ -122,7 +124,7 @@ Each example above sets a gutter of 45px between each column.
 
 ```styl
 .grid_container
-  _fg(2 2 1 1, 45, 30)
+  _fg(2 2 1 1, 45px, 30px)
 ```
 
 This sets a custom padding of 30px inside each of the columns specified.
@@ -137,14 +139,14 @@ _fg(2 2 1 1)
 ```
 
 ```styl
-_fg(5, 20, 10)
+_fg(5, 20px, 10px)
   // Five equal columns in each row
   // 20px gutters between each column (overriding the default)
   // each column has 10px padding (overriding the default)
 ```
 
 ```styl
-_fg(2 1, 60, 0)
+_fg(2 1, 60px, 0)
   // 2/3 + 1/3 columns in each row
   // 60px gutter between columns
   // columns will have no padding
@@ -155,9 +157,9 @@ _fg(2 1, 60, 0)
 Breakpoints can be defined as:
 
 ```styl
-_fg_small ?= 768 // Unitless, treated as pixels
-_fg_medium ?= 1024
-_fg_large ?= 1280
+_fg_small ?= 768px // If units are not specified, treated as pixels
+_fg_medium ?= 1024px
+_fg_large ?= 1280px
 
 +_fg_breakpoint(small) // or medium or large
 ```

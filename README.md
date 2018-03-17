@@ -3,7 +3,7 @@
 This is a set of simple CSS preprocessor mixins meant to provide a basic grid for your websites.
 <https://ajy.co/the-simplest-sass-flexbox-grid-ever>
 
-See a demo and play with it:
+See a demeo and play with it:
 
 * [Sass Demo (Codepen)](http://codepen.io/aaronjamesyoung/pen/yezKpj)
 * [Stylus Demo (Codepen)](https://codepen.io/narkoleptika/pen/eMJyjW)
@@ -15,8 +15,8 @@ This repo provides a mixin called `_fg()`. You can use this mixin on a grid *con
 The mixin accepts three arguments:
 
 1. Number of columns OR layout
-2. Width of gutter between grid columns, in pixels
-3. Amount of padding in grid columns, in pixels
+2. Width of gutter between grid columns
+3. Amount of padding in grid columns
 
 You are able to do some interesting stuff, e.g.:
 

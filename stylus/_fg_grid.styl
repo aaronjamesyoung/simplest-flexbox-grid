@@ -1,10 +1,18 @@
 // Global variables:
-// Unitless, interpreted as pixels
-_fg_gutter ?= 24  // gutter between columns. Set as desired.
-_fg_padding ?= 12  // padding for column boxes. Set as desired, can override for individual columns.
+// Specify a gutter and padding amount using any CSS units you'd like
+// if unitless, interpreted as pixels (e.g., _fg_gutter ?= 24)
+_fg_gutter ?= 24px  // gutter between columns. Set as desired.
+_fg_padding ?= 12px  // padding for column boxes. Set as desired, can override for individual columns.
+
 
 // *** Main mixin to create a per-row layout *** //
 _fg(colList, gutter = _fg_gutter, padding = _fg_padding)
+    // If gutter/padding is unitless, give it px units
+    if unit(gutter) == ''
+        gutter = unit(gutter, px)
+    if unit(padding) == ''
+        padding = unit(padding, px)
+
     if length(colList) > 1
         // Count how many columns there are altogether
         columnCount = 0
@@ -13,7 +21,7 @@ _fg(colList, gutter = _fg_gutter, padding = _fg_padding)
 
         _fg_grid(columnCount, gutter, padding)
 
-        for c, i in colList // set child items widths using nth:child()
+        for c, i in colList // set child item widths using nth:child()
             & > :nth-child({length(colList)}n + {i + 1})
                 _fg_width(c / columnCount, gutter)
     else // call _fg_grid() directly
@@ -25,20 +33,20 @@ _fg_grid(cols = 0, gutter = _fg_gutter, padding = _fg_padding)
     box-sizing border-box
     display flex
     flex-wrap wrap
-    margin-left (-1 * gutter)px
+    margin-left (-1 * gutter)
     > *
         if padding != 0
-            padding (padding)px
-        margin-left (gutter)px
+            padding padding
+        margin-left gutter
         box-sizing border-box
     > *
         calc_percent = (1 / cols) * 100%
-        calc_gutter_allowance = (gutter)px
-        width "calc(%s - %s)" % (calc_percent calc_gutter_allowance)
+        width "calc(%s - %s)" % (calc_percent gutter)
 
 
 // *** width override for a column *** //
 _fg_width(ratio, gutter = _fg_gutter)
+    if unit(gutter) == ''
+        gutter = (gutter)px
     calc_percent = ratio * 100%
-    calc_gutter = (gutter)px
-    width "calc(%s - %s)" % (calc_percent calc_gutter)
+    width "calc(%s - %s)" % (calc_percent gutter)

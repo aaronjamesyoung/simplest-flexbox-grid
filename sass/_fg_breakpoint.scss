@@ -1,20 +1,37 @@
-//Override as required.
-$_fg_small: 768 !default; // up to "tablet" size
-$_fg_medium: 1024 !default; // up to "desktop" size
-$_fg_large: 1280 !default; // up to bigger desktop size
+// Override as required.
+$_fg_small: 768px !default; // up to "tablet" size
+$_fg_medium: 1024px !default; // up to "desktop" size
+$_fg_large: 1280px !default; // up to bigger desktop size
 
 @mixin _fg_breakpoint($_fg_media) {
+  $small: $_fg_small;
+  $medium: $_fg_medium;
+  $large: $_fg_large;
+  
+  @if unitless($_fg_small) {
+    $small: $_fg_small * 1px;
+  }
+  @if unitless($_fg_medium) {
+    $medium: $_fg_medium * 1px;
+  }
+  @if unitless($_fg_large) {
+    $large: $_fg_large * 1px;
+  }
+
   @if $_fg_media == small {
-    @media only screen and (min-width: $_fg_small*1px) { @content; }
+    @media only screen and (min-width: $small) { @content; }
   }
   @else if $_fg_media == medium {
-    @media only screen and (min-width: $_fg_medium*1px) { @content; }
+    @media only screen and (min-width: $medium) { @content; }
   }
   @else if $_fg_media == large {
-    @media only screen and (min-width: $_fg_large*1px) { @content; }
+    @media only screen and (min-width: $large) { @content; }
   }
 
   @else if type-of($_fg_media) == number {
-    @media only screen and (min-width: $_fg_media*1px) { @content; }
+    @if unitless($_fg_media) {
+      $_fg_media: $_fg_media * 1px;
+    }
+    @media only screen and (min-width: $_fg_media) { @content; }
   }
 }
